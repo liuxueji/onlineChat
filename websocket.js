@@ -29,7 +29,7 @@ router.ws('/ztg', ws => {
       zhangfeiInfo.shift()
       ws.send(msg)
     }
-  }, 500)
+  }, 100)
 })
 
 router.ws('/gtz', ws => {
@@ -39,6 +39,6 @@ router.ws('/gtz', ws => {
       guanyuInfo.shift()
       ws.send(msg)
     }
-  }, 500)
+  }, 100)
 })
 module.exports = router
