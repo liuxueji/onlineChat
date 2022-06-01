@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>张飞</title>
+  <link rel="stylesheet" href="./base.css">
+</head>
+
+<body>
+  <main>
+    <div class="top">二哥</div>
+    <div class="content" id="content">
+      <div class="msg left">
+        <img src="./guanyu1.png">
+        <div>我是二哥</div>
+      </div>
+      <div class="msg right">
+        <div>我是三弟</div>
+        <img src="./zhangfei1.png">
+      </div>
+    </div>
+    <div class="bottom">
+        <input id="inp" placeholder="请输入内容"/>
+        <button class="sendBtn" onclick="sendBtn()">发送</button>
+    </div>
+  </main>
+
+  <script>
+    const ztz = new WebSocket('ws://localhost:3000/ztz')
+    ztz.onopen = () => {}
+    ztz.onmessage = (res) => content.innerHTML += rightMsg(res.data)
+
+    const gtz = new WebSocket('ws://localhost:3000/gtz')
+    gtz.onopen = () => {}
+    gtz.onmessage = (res) => content.innerHTML += leftMsg(res.data)
+
+    
+    let inp = document.getElementById('inp')
+
+    function rightMsg(value) {
+      var rightHtml = `
+        <div class="msg right">
+          <div>${value}</div>
+          <img src="./zhangfei1.png">
+        </div>
+      `;
+      return rightHtml;
+    }
+
+    function leftMsg(value) {
+      var leftHtml = `
+        <div class="msg left">
+          <img src="./guanyu1.png">
+          <div>${value}</div>
+        </div>
+      `;
+      return leftHtml;
+    }
+
+    function sendBtn(e) {
+      if (inp.value.trim() !== "") {
+        let value = inp.value;
+        ztz.send(value)
+        inp.value = "";
+      }
+    }
+  </script>
+</body>
+
+</html>
