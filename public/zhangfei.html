@@ -61,11 +61,8 @@
     }
 
     function sendBtn(e) {
-      if (inp.value.trim() !== "") {
-        let value = inp.value;
-        ztz.send(value)
-        inp.value = "";
-      }
+      let value = inp.value;
+      ztz.send(value)
     }
   </script>
 </body>
