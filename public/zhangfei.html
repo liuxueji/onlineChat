@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <main>
+  <div class="main">
     <div class="top">二哥</div>
     <div class="content" id="content">
       <div class="msg left">
@@ -23,10 +23,10 @@
       </div>
     </div>
     <div class="bottom">
-        <input id="inp" placeholder="请输入内容"/>
-        <button class="sendBtn" onclick="sendBtn()">发送</button>
+      <input id="inp" placeholder="请输入内容" />
+      <button class="sendBtn" onclick="sendBtn()">发送</button>
     </div>
-  </main>
+  </div>
 
   <script>
     const ztz = new WebSocket('ws://localhost:3000/ztz')
@@ -37,7 +37,7 @@
     gtz.onopen = () => {}
     gtz.onmessage = (res) => content.innerHTML += leftMsg(res.data)
 
-    
+
     let inp = document.getElementById('inp')
 
     function rightMsg(value) {

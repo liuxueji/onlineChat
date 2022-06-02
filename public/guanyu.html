@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <main>
+  <div class="main">
     <div class="top">三弟</div>
     <div class="content" id="content">
       <div class="msg left">
@@ -26,7 +26,7 @@
       <input id="inp" placeholder="请输入内容" />
       <button class="sendBtn" onclick="sendBtn()">发送</button>
     </div>
-  </main>
+  </div>
 
   <script>
     const gtg = new WebSocket('ws://127.0.0.1:3000/gtg')
